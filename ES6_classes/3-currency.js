@@ -10,7 +10,7 @@ export default class Currency {
 
   set code(value) {
     if (typeof value !== 'string') {
-        throw new TypeError('Must be a string');
+      throw new TypeError('Must be a string');
     }
     this._code = value;
   }
@@ -21,7 +21,7 @@ export default class Currency {
 
   set name(value) {
     if (typeof value !== 'string') {
-        throw new TypeError('Must be a string');
+      throw new TypeError('Must be a string');
     }
     this._name = value;
   }
