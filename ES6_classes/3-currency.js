@@ -21,12 +21,12 @@ export default class Currency {
 
   set name(value) {
     if (typeof value !== 'string') {
-        throw new TypeError('Must be a string')
+        throw new TypeError('Must be a string');
     }
     this._name = value;
   }
 
   displayFullCurrency() {
-    console.log(`${this.name} (${this.code})`)
+    return `${this.name} (${this.code})`;
   }
 }
