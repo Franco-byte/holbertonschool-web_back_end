@@ -56,7 +56,6 @@ class Server:
         # Any = int | list | None
         '''Return a dictionary with the date of the page'''
         dataset = self.dataset()
-        print(len(dataset))
         total_pages = math.ceil(len(dataset) / page_size)
 
         return {
