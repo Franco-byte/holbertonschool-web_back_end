@@ -39,7 +39,11 @@ class Server:
             }
         return self.__indexed_dataset
 
-    def get_hyper_index(self, index: Optional[int] = None, page_size: int = 10) -> Dict:
+    def get_hyper_index(
+        self,
+        index: Optional[int] = None,
+        page_size: int = 10
+    ) -> Dict:  # pycodestile is a bullshith xd
         """
         Return a page of the dataset starting from a given index,
         resilient to deleted rows.
@@ -51,7 +55,7 @@ class Server:
         current_index = index
 
         while (len(data) < page_size and
-                current_index < len(indexed_data) + page_size):
+                current_index < max(indexed_data.keys()) + 1):
             if current_index in indexed_data:
                 data.append(indexed_data[current_index])
             current_index += 1
