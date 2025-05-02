@@ -51,7 +51,7 @@ class Server:
         assert index is not None and index < len(self.indexed_dataset())
 
         indexed_data = self.indexed_dataset()
-        data: List[List[str]] = []
+        data: List[List] = []
         current_index = index
 
         while (len(data) < page_size and
