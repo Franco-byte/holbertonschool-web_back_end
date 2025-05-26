@@ -3,7 +3,7 @@ const fd = require('fs').promises;
 async function countStudents(path) {
   try {
     const data = await fd.readFile(path, 'utf8');
-    const lines = data.split('\n').filter(line => line.trim() !== '');
+    const lines = data.split('\n').filter((line) => line.trim() !== '');
 
     const students = lines.slice(1);
     const fields = {};
@@ -29,7 +29,7 @@ async function countStudents(path) {
       }
     }
   } catch (error) {
-      throw new Error('Cannot load the database');
+    throw new Error('Cannot load the database');
   }
 }
 
