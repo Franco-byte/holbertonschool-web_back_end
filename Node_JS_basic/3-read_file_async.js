@@ -22,13 +22,15 @@ async function countStudents(path) {
 
         console.log(`Number of students: ${students.length}`);
         for (const field in fields) {
+          if (Object.prototype.hasOwnProperty.call(obj, key)) {
             console.log(
                 `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`
             );
+          }
         }
     } catch (error) {
         throw new Error('Cannot load the database');
     }
-};
+}
 
 module.exports = countStudents;
