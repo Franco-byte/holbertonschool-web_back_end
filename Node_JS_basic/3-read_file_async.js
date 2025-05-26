@@ -1,11 +1,11 @@
-const fd = require('fs').promises;
+const fs = require('fs').promises;
 
 async function countStudents(path) {
   try {
-    const data = await fd.readFile(path, 'utf8');
+    const data = await fs.readFile(path, 'utf8');
     const lines = data.split('\n').filter((line) => line.trim() !== '');
+    const students = lines.slice(1); // Saltamos la cabecera
 
-    const students = lines.slice(1);
     const fields = {};
 
     for (const line of students) {
@@ -20,15 +20,16 @@ async function countStudents(path) {
       fields[field].push(firstName);
     }
 
-    console.log(`Number of students: ${students.length}`);
+    // Construimos el string que espera el checker
+    let output = `Number of students: ${students.length}`;
     for (const field in fields) {
       if (Object.prototype.hasOwnProperty.call(fields, field)) {
-        console.log(
-          `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`,
-        );
+        output += `\nNumber of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`;
       }
     }
-  } catch (error) {
+
+    return output;
+  } catch (err) {
     throw new Error('Cannot load the database');
   }
 }
